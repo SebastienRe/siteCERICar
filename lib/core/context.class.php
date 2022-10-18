@@ -1,7 +1,7 @@
 <?php
 class context
 {
-    private $data;
+    private $data; # contient des variables 
     const SUCCESS="Success";
     const ERROR="Error";
     const NONE="None";
@@ -20,8 +20,25 @@ class context
 	
 	private function __construct()
 	{
-	  			
+		
 	}
+
+	function trigger_notification($notification)
+	{
+		if (!$this->notif)
+			$this->notif = "<h3>Notifications : </h1><p> -> ${notification}</p>";
+		else
+			$this->notif = "$this->notif<p> -> ${notification}</p>";
+	}
+
+	function trigger_error($error)
+	{
+		if (!$this->error)
+			$this->error = "<h3>ERREURS : </h1><p> -> ${error} !!!</p>";
+		else
+			$this->error = "$this->error<p> -> ${error} !!!</p>";
+	}
+
 	public function init($name)
 	{
        $this->name=$name;
@@ -43,7 +60,7 @@ class context
 		header("location:".$url); 
 	}
 
-	public function executeAction($action,$request)
+	public function executeAction($action,$request) # ?action = nom de fonction dans mainController
 	{
 		$this->layout="layout";
 		if(!method_exists('mainController',$action))
@@ -67,8 +84,7 @@ class context
 	}
     
 	
-	
-	public function __get($prop)
+	public function __get($prop) # get variables from data
     	{
 		if(array_key_exists($prop, $this->data))        	
 			return $this->data[$prop];
@@ -76,10 +92,9 @@ class context
 			return NULL;      
     	}
     
-   	public function __set($prop,$value) 
+   	public function __set($prop,$value) # set variables from data
     	{
         	$this->data[$prop]=$value;      
     	}
 	
-		
 }
