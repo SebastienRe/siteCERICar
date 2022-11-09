@@ -7,7 +7,8 @@ $action = "monApplication";
 
 if(key_exists("action", $_REQUEST))# si action est dans $_request
 	$action =  $_REQUEST['action'];
-
+else
+	$action = "index";
 
 require_once 'lib/core.php';
 require_once $nameApp.'/controller/mainController.php';#on inclut le controlleur
