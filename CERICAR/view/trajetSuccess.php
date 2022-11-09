@@ -1,0 +1,1 @@
+<?php echo "distance : ".$context->trajet->distance?>

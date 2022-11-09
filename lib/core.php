@@ -6,4 +6,5 @@ use Doctrine\ORM\EntityManager;
 
 require_once 'core/context.class.php' ;
 require_once 'core/dbconnection.class.php' ;
+require_once 'core/affichage.class.php' ;
 

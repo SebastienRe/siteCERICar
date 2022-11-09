@@ -3,7 +3,7 @@
 $nameApp = "CERICAR";
 
 //action par défaut
-$action = "index";
+$action = "monApplication";
 
 if(key_exists("action", $_REQUEST))# si action est dans $_request
 	$action =  $_REQUEST['action'];

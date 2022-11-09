@@ -1,0 +1,1 @@
+<?php echo "nom : ".$context->user->nom ?>

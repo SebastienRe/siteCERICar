@@ -28,7 +28,11 @@ class utilisateur{
 	/** @Column(type="string", length=200) */ 
 	public $avatar;
 
-	
+	public function __toString()
+    {
+        $format = "Utilisateur (id: %s, identifiant: %s, pass: %s, nom: %s, prenom: %s, avatar: %s)\n";
+        return sprintf($format, $this->id, $this->identifiant, $this->pass, $this->nom, $this->prenom, $this->avatar);
+    }
 }
 
 ?>

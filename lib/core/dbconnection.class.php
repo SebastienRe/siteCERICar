@@ -1,8 +1,8 @@
 <?php
 
 define ('HOST', 'pedago01c.univ-avignon.fr') ;
-define ('USER', ''  ) ;
-define ('PASS', '' ) ;
+define ('USER', 'uapv2201797'  ) ;
+define ('PASS', 'cawSKI' ) ;
 define ('DB', 'etd' ) ;
 
 use Doctrine\ORM\Tools\Setup;
@@ -23,17 +23,11 @@ private function __construct(){
 	'host'	=> HOST,
 	'driver' => 'pdo_pgsql');
 	
-
-
 	/*self::$connection = \Doctrine\DBAL\DriverManager::getConnection($param, $config);
 	echo "is connected : ".self::$connection->getDatabase();*/
 
-	
 //	self::$entityManager = \Doctrine\ORM\EntityManager::create($param, $config);
 	self::$entityManager = EntityManager::create($param, $config);
-
-	echo "is connected : ".self::$entityManager->getConnection()->getDatabase();
-
 }	
 
 public static function getInstance(){
@@ -51,7 +45,6 @@ public function getEntityManager(){
 	if(!empty(self::$entityManager)) return self::$entityManager;
 	else return NULL;
 }
-
 
 public function __clone(){
 	

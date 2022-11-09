@@ -1,30 +1,45 @@
 <?php
 
 use Doctrine\Common\Collections\ArrayCollection;
-
+/** 
+ * @Entity
+ * @Table(name="jabaianb.voyage")
+ */
 class voyage{
 
-    /** @Column(type="int", primary key) */ 
+    /** @Column(type="integer")
+     *  @Id @GeneratedValue*/  
 	public $id;
 
-    /** @Column(type="int", utilisateur) */
+    /**
+    * @ManyToOne(targetEntity="utilisateur")
+    * @JoinColumn(name="conducteur", referencedColumnName ="id")
+    */
     public $conducteur;
 
-    /** @Column(type="int", foreign key) */
+    /**
+    * @ManyToOne(targetEntity="trajet")
+    * @JoinColumn(name="trajet", referencedColumnName ="id")
+    */
     public $trajet;
 
-    /** @Column(type="int") */
+    /** @Column(type="integer") */
     public $tarif;
 
-    /** @Column(type="int") */
+    /** @Column(type="integer") */
     public $nbPlace;
 
-    /** @Column(type="int") */
+    /** @Column(type="integer") */
     public $heureDepart;
 
-    /** @Column(type="varchar", taille=500) */
-    public $contraites;
+    /** @Column(type="string", length=500) */
+    public $contraintes;
 	
+    public function __toString()
+    {
+        $format = "Voyage (id: %s, conducteur: %s, trajet: %s, tarif: %s, nbPlace: %s, heureDepart: %s, contraintes: %s)\n";
+        return sprintf($format, $this->id, $this->conducteur->id, $this->trajet->id, $this->tarif, $this->nbPlace, $this->heureDepart, $this->contraintes);
+    }
 }
 
 ?>
