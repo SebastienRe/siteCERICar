@@ -62,11 +62,14 @@ class mainController
 	}
 
 	public static function getVoyagesDisponibles($request, $context){
-		$getVoyagesDisponibles = voyageTable::getVoyages();
-		$context->getVoyagesDisponibles = $getVoyagesDisponibles;
-		if ($context->getVoyagesDisponibles == FALSE)
-			return context::ERROR;
-		return context::SUCCESS;
+		if (isset($request['depart']) && isset($request['arrivee'])){
+			$getVoyagesDisponibles = voyageTable::getVoyages($request['depart'], $request['arrivee']);
+			$context->getVoyagesDisponibles = $getVoyagesDisponibles;
+			if ($context->getVoyagesDisponibles == FALSE)
+				return context::ERROR;
+			return context::SUCCESS;
+		}
+		return context::ERROR;
 	}
 }
 // context::ERROR
