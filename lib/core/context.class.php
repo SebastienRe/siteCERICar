@@ -43,7 +43,7 @@ class context
 		if(!method_exists('mainController',$action))
 		  return false;
 		
-		return  mainController::$action($request,$this);	
+		return mainController::$action($request,$this);	
 	}
 	
 	public function getSessionAttribute($attribute){

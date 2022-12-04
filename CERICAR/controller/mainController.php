@@ -32,8 +32,9 @@ class mainController
 		if (isset($request['id'])){
 			$user = utilisateurTable::getUserById($request['id']);
 			$context->user = $user;
+			return context::SUCCESS;
 		}
-		return context::SUCCESS;
+		return context::ERROR;
 	}
 
 	public static function reservationByVoyage($request, $context){
@@ -62,8 +63,8 @@ class mainController
 	}
 
 	public static function getVoyagesDisponibles($request, $context){
-		if (isset($request['depart']) && isset($request['arrivee'])){
-			$getVoyagesDisponibles = voyageTable::getVoyages($request['depart'], $request['arrivee']);
+		if (isset($request['depart']) && isset($request['arrivee']) && isset($request['nbPersonnes']) ){
+			$getVoyagesDisponibles = voyageTable::getVoyages($request['depart'], $request['arrivee'], $request['nbPersonnes']);
 			$context->getVoyagesDisponibles = $getVoyagesDisponibles;
 			if ($context->getVoyagesDisponibles == FALSE)
 				return context::ERROR;

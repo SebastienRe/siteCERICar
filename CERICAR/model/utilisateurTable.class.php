@@ -28,6 +28,18 @@ class utilisateurTable {
 			affichage::trigger_error("Utiliseur non trouvé");
 		return $user; 
 	}
+
+	public static function createUser($id){
+		/*destinée à récupérer les informations d'un utilisateur selon un identifiant (id).*/
+		$em = dbconnection::getInstance()->getEntityManager() ; //connexion bdd
+		$userRepository = $em->getRepository('utilisateur');
+		$user = new Utilisateur;
+
+		$user->nom = "hey";
+		
+		$em->persist($user);
+		$em->flush();
+	}
 }
 
 ?>

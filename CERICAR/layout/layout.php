@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://pedago.univ-avignon.fr/~uapv2201797/squelette_L3/css/w3.css">
     <link rel="stylesheet" href="https://pedago.univ-avignon.fr/~uapv2201797/squelette_L3/css/style.css">
+    <SCRIPT src="https://pedago.univ-avignon.fr/~uapv2201797/squelette_L3/js/jquery.js"></SCRIPT>
+    <SCRIPT src="https://pedago.univ-avignon.fr/~uapv2201797/squelette_L3/js/script.js"></SCRIPT>
 	</head>
 
   <body>
@@ -16,16 +18,21 @@
 	    <?php echo $context->getSessionAttribute('user_id')." est connecte"; ?>
     <?php endif; ?>
 
-    <div id="page">
+      <!-- Navbar (sit on top) -->
+      <div class="w3-top">
+        <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+          <a href="https://pedago.univ-avignon.fr/~uapv2201797/squelette_L3/monApplication.php?action=index" class="w3-bar-item w3-button">CERICAR ACCUEIL</a>
+          <!-- Right-sided navbar links. Hide them on small screens -->
+          <div class="w3-right w3-hide-small">
+            <a href="https://pedago.univ-avignon.fr/~uapv2201797/squelette_L3/index.php?action=about" class="w3-bar-item w3-button">A propos</a>
+            <a href="https://pedago.univ-avignon.fr/~uapv2201797/squelette_L3/index.php?action=contact" class="w3-bar-item w3-button">Contact</a>
+            <a href="https://pedago.univ-avignon.fr/~uapv2201797/squelette_L3/index.php?action=login" class="w3-bar-item w3-button">Connexion</a>
+            <a href="https://pedago.univ-avignon.fr/~uapv2201797/squelette_L3/index.php?action=register" class="w3-bar-item w3-button">Inscription</a>
+          </div>
+        </div>
 
-      <!-- Header -->
-    <header class="w3-container w3-center w3-padding-32"> 
-      <h1><b>CERICAR</b></h1>
-    </header>
-      <div id="page_maincontent">	
-      	<?php include($template_view); ?>
-      </div>
-
+      <!-- error and notifications -->
+      <div id="page">
       <?php if(affichage::get_notif()): ?>
       	<div id="flash_notif" class="w3-panel w3-orange">
             <?php echo affichage::get_notif() ?>
@@ -37,6 +44,15 @@
       	</div>
       <?php endif; ?>
 
+      <!-- Header -->
+      <header class="w3-container w3-center w3-padding-32"> 
+        <h1><b>CERICAR</b></h1>
+      </header>
+      <div id="page_maincontent">             
+      	<?php include($view_path);?>
+      </div>
+
+      <!-- Footer -->
       <footer class="w3-container w3-padding-32 w3-center w3-opacity w3-light-grey w3-xlarge">
         <i class="fa fa-facebook-official w3-hover-opacity"></i>
         <i class="fa fa-instagram w3-hover-opacity"></i>

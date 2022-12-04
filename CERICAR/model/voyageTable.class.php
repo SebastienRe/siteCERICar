@@ -19,17 +19,24 @@ class voyageTable {
         
     } 
 
-    public static function getVoyages($depart, $arrivee){
+    public static function getVoyages($depart, $arrivee, $nbPersonnes){
         $trajet = trajetTable::getTrajet($depart, $arrivee);
-        
+        if ($trajet == false)
+            return $trajet;
+        if ($nbPersonnes == "")
+            $nbPersonnes = 0;
         $em = dbconnection::getInstance()->getEntityManager() ;
         $userRepository = $em->getRepository('voyage');
 		$voyages = $userRepository->findBy(array('trajet' => $trajet->id));
-        if ($voyages == false){
-			affichage::trigger_error("voyages non trouvé");
+        $tab = array();
+        foreach($voyages as $data){
+            if (intval($nbPersonnes) <= $data->nbPlace)
+                $tab[] = $data;
         }
+        if ($voyages == false)
+			affichage::trigger_error("voyages non trouvé");
         
-		return $voyages;
+		return $tab;
     }
 }
 

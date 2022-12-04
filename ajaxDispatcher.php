@@ -25,8 +25,8 @@ try{
 	if($view==false || $view==context::NONE) 
 		throw new Exception($action);
 	$view_path=$nameApp."/view/".$action.$view.".php";//chemin de la vue 
-
-	include($nameApp."/layout/".$context->getLayout().".php");//on inclut le layout
+	echo "coucou";
+	include($view_path);//on inclut le layout
 }
 catch(Exception $e){
 	$affichage::trigger_error("view is not set in action=".$e->getMessage());

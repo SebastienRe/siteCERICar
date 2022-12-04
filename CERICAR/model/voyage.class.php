@@ -37,8 +37,33 @@ class voyage{
 	
     public function __toString()
     {
-        $format = "Voyage (id: %s, conducteur: %s, trajet: %s, tarif: %s, nbPlace: %s, heureDepart: %s, contraintes: %s)\n";
-        return sprintf($format, $this->id, $this->conducteur->id, $this->trajet->id, $this->tarif, $this->nbPlace, $this->heureDepart, $this->contraintes);
+        $format="<tr>
+                    <td>
+                        %s
+                    </td>
+                    <td>
+                        %s
+                    </td>
+                    <td>
+                        %s
+                    </td>
+                    <td>
+                        %s
+                    </td>
+                    <td>
+                        %s
+                    </td>
+                    <td>
+                        %s
+                    </td>
+                    <td>
+                        %s
+                    </td>
+                </tr>";
+        return sprintf($format, $this->trajet->depart, $this->trajet->arrivee
+                        , $this->heureDepart, $this->nbPlace, $this->conducteur->nom
+                        , $this->conducteur->prenom, $this->contraintes);
+        
     }
 }
 
